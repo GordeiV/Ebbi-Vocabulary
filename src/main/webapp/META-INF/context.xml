@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <Resource
+            name="jdbc/wordsapp"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="root"
+            password="base121314"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost/wordsapp?serverTimezone=UTC&amp;allowMultiQueries=true"
+            maxActive="4"
+            maxIdle="2"
+    />
+</Context>
