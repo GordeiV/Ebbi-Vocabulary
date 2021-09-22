@@ -56,12 +56,48 @@ public class Vocabulary {
         return resultWords;
     }
 
+    public void setAsRepeated() {
+        switch(vocabularyStatus) {
+            case FIRST_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(1);
+                break;
+            case SECOND_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(2);
+                break;
+            case THIRD_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(4);
+                break;
+            case FOURTH_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(7);
+                break;
+            case FIFTH_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(14);
+                break;
+            case SIXTH_REPEAT:
+                repeatTime = LocalDateTime.now().plusDays(30);
+                break;
+        }
+
+        if(vocabularyStatus != VocabularyStatus.ARCHIVED) {
+            int newStatus = vocabularyStatus.ordinal() + 1;
+            vocabularyStatus = VocabularyStatus.fromValue(newStatus);
+        }
+    }
+
     public LocalDateTime getDate() {
         return date;
     }
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public LocalDateTime getRepeatTime() {
+        return repeatTime;
+    }
+
+    public void setRepeatTime(LocalDateTime repeatTime) {
+        this.repeatTime = repeatTime;
     }
 
     public String getName() {

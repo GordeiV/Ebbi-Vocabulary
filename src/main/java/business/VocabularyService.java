@@ -23,4 +23,12 @@ public class VocabularyService {
     public void saveVocabulary(Vocabulary vocabulary, User user) throws DaoException {
         vocabularyDao.saveVocabulary(vocabulary, user);
     }
+
+    public List<Vocabulary> getVocabulariesForRepeat(User user) throws DaoException {
+        return vocabularyDao.getVocabulariesForRepeat(user.getId());
+    }
+
+    public void setVocabularyAsRepeated(Long id) throws DaoException {
+        vocabularyDao.setVocabularyAsRepeated(id);
+    }
 }

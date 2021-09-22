@@ -118,7 +118,7 @@ public class VocabularyDaoTest {
                 16L);
         VocabularyDao vocabularyDao = new VocabularyDao();
         vocabularyDao.setConnectionManager(new DirectConnectionManager());
-        vocabularyDao.updateVocabulary(vocabulary);
+        vocabularyDao.updateVocabularyName(vocabulary);
         Assert.assertTrue(vocabularyDao.findVocabulary("question").size() == 0);
         Assert.assertTrue(vocabularyDao.findVocabulary("forTest").size() == 1);
     }

@@ -6,6 +6,7 @@ public enum VocabularyStatus {
     THIRD_REPEAT,
     FOURTH_REPEAT,
     FIFTH_REPEAT,
+    SIXTH_REPEAT,
     ARCHIVED;
 
     public static VocabularyStatus fromValue(int value) {

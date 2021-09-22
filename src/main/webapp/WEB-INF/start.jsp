@@ -12,7 +12,7 @@
         <ul class="menu">
             <li><a href="create/vocabulary">Create new vocabulary</a></li>
             <li><a href="vocabularies">Show all vocabularies</a></li>
-            <li><a href="">Calender</a></li>
+            <li><a href="repeat">Vocabularies for repeat</a></li>
         </ul>
     </div>
 </div>
