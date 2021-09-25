@@ -1,4 +1,4 @@
-package web;
+package web.user;
 
 import business.UserService;
 import dao.DaoException;

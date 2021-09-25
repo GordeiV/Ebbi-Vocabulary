@@ -1,4 +1,4 @@
-package web;
+package web.vocabulary;
 
 import business.VocabularyService;
 import dao.DaoException;
@@ -47,6 +47,8 @@ public class VocabulariesServlet extends HttpServlet {
         } catch (DaoException e) {
             logger.error(e.getMessage());
         }
+
+        req.getSession().setAttribute("vocabularies", vocabularies);
         req.setAttribute("login", user.getLogin());
         req.setAttribute("vocabularies", vocabularies);
         req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);

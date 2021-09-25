@@ -1,4 +1,4 @@
-package web;
+package web.user;
 
 import entity.User;
 import org.slf4j.Logger;

@@ -15,15 +15,12 @@
 
             <tr>
              <td>
-              <p>
-                <c:out value="${vocabulary.name}" />
-                <c:out value="${vocabulary.id}" />
-
-                <input type="button" value="Vocabulary is repeated2"
-                onclick="window.location.href = 'http://localhost:8080/MyFirstOwnProject-1.0/repeat?id=${vocabulary.id}'"
-                class="cancel_button">
-
-              </p>
+              <a href="/MyFirstOwnProject-1.0/vocabulary?id=<c:out value='${vocabulary.id}' />"> <c:out value="${vocabulary.name}" /> </a>
+             </td>
+             <td>
+             <input type="button" value="Vocabulary is repeated"
+                             onclick="window.location.href = 'http://localhost:8080/MyFirstOwnProject-1.0/repeat?id=${vocabulary.id}'"
+                             class="cancel_button">
              </td>
             </tr>
 

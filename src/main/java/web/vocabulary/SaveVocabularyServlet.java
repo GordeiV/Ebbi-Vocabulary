@@ -1,12 +1,12 @@
-package web;
+package web.vocabulary;
 
-import business.UserService;
 import business.VocabularyService;
 import dao.DaoException;
 import entity.User;
 import entity.Vocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import web.user.StartSiteServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

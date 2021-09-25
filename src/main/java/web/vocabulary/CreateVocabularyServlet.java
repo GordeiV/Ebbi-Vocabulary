@@ -1,4 +1,4 @@
-package web;
+package web.vocabulary;
 
 import entity.Vocabulary;
 import entity.Word;

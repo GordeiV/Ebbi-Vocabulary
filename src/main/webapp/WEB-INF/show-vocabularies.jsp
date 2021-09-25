@@ -8,13 +8,12 @@
 
 <body>
 <div class ="main">
-    <p>${login}</p>
+    <p>User: ${login}</p>
     <div>
        <table>
          <c:forEach items="${vocabularies}" var="vocabulary">
            <tr>
-             <td><c:out value="${vocabulary.name}" /></td>
-             <td><c:out value="${vocabulary.vocabularyStatus}" /></td>
+             <a href="/MyFirstOwnProject-1.0/vocabulary?id=<c:out value='${vocabulary.id}' />"> <c:out value="${vocabulary.name}" /> </a>
            </tr>
            <br>
          </c:forEach>

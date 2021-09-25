@@ -1,4 +1,4 @@
-package web;
+package web.vocabulary;
 
 import business.VocabularyService;
 import dao.DaoException;
@@ -59,6 +59,7 @@ public class RepeatVocabulariesServlet extends HttpServlet {
         if(vocabularies.size() == 0) {
             resp.getWriter().print("There are no vocabularies to repeat");
         } else {
+            req.getSession().setAttribute("vocabularies", vocabularies);
             req.setAttribute("vocabularies", vocabularies);
             req.getRequestDispatcher("/WEB-INF/show-vocabularies-for-repeat.jsp").forward(req, resp);
         }
