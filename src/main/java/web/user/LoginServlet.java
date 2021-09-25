@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         logger.info("here");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/authorization.jsp").forward(req, resp);
     }
 
     @Override
@@ -45,10 +45,10 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/start");
         } catch (NoUserFound noUserFound) {
             req.setAttribute("error", "Unknown user, please try again");
-            req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/authorization.jsp").forward(req, resp);
         } catch (WrongPassword wrongPassword) {
             req.setAttribute("error", "Password or username is incorrect");
-            req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/authorization.jsp").forward(req, resp);
         } catch (DaoException e) {
             logger.error(e.getMessage());
         }
