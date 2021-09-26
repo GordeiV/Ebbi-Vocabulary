@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+margin: 0;
+}
+
+body {
+font-size: 1.2em;
+background-color: #fff;
+color: #1DA1F2;
+font-family: 'Bebas Neue', cursive;
+}
+
+input[type="search"] {
+    color: #5d5d5d;
+    width: 60%;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+input[type="submit"] {
+    color: #000000;
+    background-color: #1DA1F2;
+    padding: 8px;
+    border-radius: 15px;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+h1 {
+    color: #ffffff;
+    padding: 5px 50px 5px 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    color: #1DA1F2;
+}
+
+ul {
+    padding: 0px;
+}
+
+p {
+    color: black;
+}
+
+
+ul li {
+    list-style-type: none;
+    margin: 0 0 6px 0;
+    padding: 0 0 4px 5px;
+    line-height: 1.5em;
+}
+
+.site_content > div {
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    margin: 10px;
+    position: relative;
+    box-shadow: 14px 14px 20px #cbced1;
+}
+
+.actions {
+    font-size: 28px;
+    background: #1DA1F2;
+    border-radius: 10px 100px / 120px;
+    padding: 10px;
+    width: 30%;
+}
+
+.actions a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s, color .3s;
+}
+
+.actions a:hover {
+    color: white;
+    background-size: 100% 2px;
+}
+
+.find {
+    border-radius: 20px;
+    width: 30%;
+    padding: 30px;
+    background: #ecf0f3;
+}
+
+.about {
+    border-radius: 20px;
+    width: 30%;
+    padding: 30px;
+    background: #ecf0f3;
+}
+
+.mebubar {
+    float: right;
+    padding-top: 12px;
+    font-size: 1.2em;
+}
+
+.header {
+    background-color: #1DA1F2;
+    height: 70px;
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 900px;
+    margin-bottom: 10px;
+}
+
+.main, .logo, .menubar, .site_content, .footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    float: left;
+    margin: 5px;
+}
+
+
+ul.menu li {
+    float: left;
+}
+
+ul.menu li a {
+    display: block;
+    height: 20px;
+    padding: 6px 35px 5px 28px;
+    color: #000000;
+    text-decoration: none;
+  }
+
+ul.menu li.selected a {
+    color: #ffffff;
+}
+
+ul.menu li a:hover {
+    color: #ffffff;
+}
+
