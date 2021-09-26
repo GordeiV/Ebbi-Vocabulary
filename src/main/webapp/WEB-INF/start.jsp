@@ -41,8 +41,9 @@
 
             <div class="find">
                 <form action="find" method="POST" id="search_form">
-                    <input type="search" name="search_field" placeholder="Vocabulary's name">
+                    <input type="search" name="vocabulary-name" placeholder="Vocabulary's name">
                     <input type="submit" class="btn" value="Find">
+                    <p class="message">${message}</p>
                 </form>
             </div>
 

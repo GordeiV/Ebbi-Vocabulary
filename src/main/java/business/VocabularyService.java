@@ -20,6 +20,10 @@ public class VocabularyService {
         return vocabularyDao.getAllVocabularies(user.getId());
     }
 
+    public List<Vocabulary> findVocabulariesByPattern(String pattern) throws DaoException {
+        return vocabularyDao.findVocabulary(pattern);
+    }
+
     public void saveVocabulary(Vocabulary vocabulary, User user) throws DaoException {
         vocabularyDao.saveVocabulary(vocabulary, user);
     }

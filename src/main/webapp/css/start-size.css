@@ -67,6 +67,11 @@ ul li {
     box-shadow: 14px 14px 20px #cbced1;
 }
 
+.message {
+    padding: 10px;
+    color: rgb(128, 13, 5);
+}
+
 .actions {
     font-size: 28px;
     background: #1DA1F2;
