@@ -2,6 +2,7 @@
 
 body{
   font-family: 'Bebas Neue', cursive;
+  font-size: 1.2em;
 }
 
 table {
@@ -12,7 +13,7 @@ input {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
@@ -26,23 +27,28 @@ button {
   cursor: pointer;
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   font-family: 'Bebas Neue', cursive;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 a {
+  font-size: 24px;
     color: black;
     font-family: 'Bebas Neue', cursive;
 }
 
+td {
+  font-size: 22px;
+}
+
 .titel {
-  font-size: 1.8rem;
+  font-size: 32px;
   color: #1DA1F2;
   letter-spacing: 1px;
   font-family: 'Bebas Neue', cursive;
 }
 
 .under_titel {
-  font-size: 1.2rem;
+  font-size: 24px;
   color: #1DA1F2;
   letter-spacing: 1px;
   font-family: 'Bebas Neue', cursive;
@@ -86,7 +92,7 @@ a {
 #back {
   background: #ecf0f3;
   padding: 10px;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }

@@ -16,6 +16,7 @@ input[type="search"] {
     width: 60%;
     padding: 8px;
     border-radius: 15px;
+    font-size: 18px;
 }
 
 input[type="submit"] {
@@ -26,6 +27,7 @@ input[type="submit"] {
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 1px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 h1 {
@@ -58,6 +60,11 @@ ul li {
     line-height: 1.5em;
 }
 
+.message {
+    padding: 10px;
+    color: rgb(128, 13, 5);
+}
+
 .site_content > div {
     box-sizing: border-box;
     float: left;
@@ -65,11 +72,6 @@ ul li {
     margin: 10px;
     position: relative;
     box-shadow: 14px 14px 20px #cbced1;
-}
-
-.message {
-    padding: 10px;
-    color: rgb(128, 13, 5);
 }
 
 .actions {
@@ -95,10 +97,13 @@ ul li {
 }
 
 .find {
+    font-size: 20px;
     border-radius: 20px;
+    min-height: 120px;
     width: 30%;
     padding: 30px;
     background: #ecf0f3;
+    transition: all .4s ease;
 }
 
 .about {
@@ -106,6 +111,7 @@ ul li {
     width: 30%;
     padding: 30px;
     background: #ecf0f3;
+    font-size: 20px;
 }
 
 .mebubar {
@@ -133,6 +139,9 @@ ul li {
     margin: 5px;
 }
 
+.vocabulary-list {
+
+}
 
 ul.menu li {
     float: left;
@@ -153,4 +162,6 @@ ul.menu li.selected a {
 ul.menu li a:hover {
     color: #ffffff;
 }
+
+
 

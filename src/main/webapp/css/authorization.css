@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+body {
+  font-size: 1.2em;
+}
+
 input {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
@@ -21,19 +25,20 @@ button {
 }
 
 a {
+    font-size: 24px;
     color: black;
     font-family: 'Bebas Neue', cursive;
 }
 
 .titel {
-  font-size: 1.8rem;
+  font-size: 32px;
   color: #1DA1F2;
   letter-spacing: 1px;
   font-family: 'Bebas Neue', cursive;
 }
 
 .under_titel {
-  font-size: 1.2rem;
+  font-size: 24px;
   color: #1DA1F2;
   letter-spacing: 1px;
   font-family: 'Bebas Neue', cursive;
@@ -43,6 +48,7 @@ a {
 }
 
 .container {
+    font-size: 1.2em;
     margin-left: auto;
     margin-right: auto;
     position: relative;

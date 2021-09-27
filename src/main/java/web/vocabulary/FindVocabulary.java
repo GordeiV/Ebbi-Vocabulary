@@ -2,6 +2,7 @@ package web.vocabulary;
 
 import business.VocabularyService;
 import dao.DaoException;
+import entity.User;
 import entity.Vocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,22 @@ public class FindVocabulary extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+
+//        logger.info()
+
+        User user = (User) req.getSession().getAttribute("user");
+
+        logger.trace("user: {}", user);
+
+        if (user == null) {
+            logger.trace("if-loop entered");
+            resp.sendRedirect(req.getContextPath() + "/login");
+            return;
+        }
+
+
         req.removeAttribute("message");
         req.removeAttribute("vocabularies");
 
@@ -34,7 +51,7 @@ public class FindVocabulary extends HttpServlet {
         logger.info("pattern: {}", pattern);
         List<Vocabulary> vocabularies = null;
         try {
-            vocabularies = vocabularyService.findVocabulariesByPattern(pattern);
+            vocabularies = vocabularyService.findUsersVocabularies(pattern, user.getId());
             logger.info("Size: {}", vocabularies.size());
         } catch (DaoException e) {
             logger.error("", e);
@@ -49,5 +66,6 @@ public class FindVocabulary extends HttpServlet {
             req.setAttribute("vocabularies", vocabularies);
         }
         req.getRequestDispatcher("/WEB-INF/start.jsp").forward(req, resp);
+
     }
 }

@@ -20,8 +20,8 @@ public class VocabularyService {
         return vocabularyDao.getAllVocabularies(user.getId());
     }
 
-    public List<Vocabulary> findVocabulariesByPattern(String pattern) throws DaoException {
-        return vocabularyDao.findVocabulary(pattern);
+    public List<Vocabulary> findUsersVocabularies(String pattern, Long userId) throws DaoException {
+        return vocabularyDao.findUsersVocabulary(pattern, userId);
     }
 
     public void saveVocabulary(Vocabulary vocabulary, User user) throws DaoException {
@@ -34,5 +34,9 @@ public class VocabularyService {
 
     public void setVocabularyAsRepeated(Long id) throws DaoException {
         vocabularyDao.setVocabularyAsRepeated(id);
+    }
+
+    public int getAmountOfVocabularies(Long userId) throws DaoException {
+        return vocabularyDao.getAmountOfVocabularies(userId);
     }
 }

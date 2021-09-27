@@ -1,6 +1,8 @@
-package web.vocabulary;
+package web.user;
 
+import business.UserService;
 import business.VocabularyService;
+import business.WordService;
 import dao.DaoException;
 import entity.User;
 import entity.Vocabulary;
@@ -13,17 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "vocabularies", urlPatterns = {"/vocabularies"})
-public class VocabulariesServlet extends HttpServlet {
-    private static final Logger logger = LoggerFactory.getLogger(VocabulariesServlet.class);
-    private List<Vocabulary> vocabularies;
+@WebServlet(name="profile", urlPatterns = {"/profile"})
+public class ProfileServlet extends HttpServlet {
+    private Logger logger = LoggerFactory.getLogger(ProfileServlet.class);
     private VocabularyService vocabularyService;
+    private WordService wordService;
 
     @Override
     public void init() throws ServletException {
         vocabularyService = new VocabularyService();
+        wordService = new WordService();
     }
 
     @Override
@@ -33,23 +35,22 @@ public class VocabulariesServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute("user");
 
-        logger.trace("user: {}", user);
-
         if (user == null) {
             logger.trace("if-loop entered");
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-
         try {
-            vocabularies = vocabularyService.getUsersVocabularies(user);
+            int vocabulariesAmount = vocabularyService.getAmountOfVocabularies(user.getId());
+            int wordsAmount = wordService.getAmountOfWords(user.getId());
+            req.setAttribute("num_voc", vocabulariesAmount);
+            req.setAttribute("num_words", wordsAmount);
+            req.setAttribute("login", user.getLogin());
         } catch (DaoException e) {
-            logger.error(e.getMessage());
+            logger.error("", e);
         }
 
-        req.setAttribute("login", user.getLogin());
-        req.setAttribute("vocabularies", vocabularies);
-        req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
     }
 }

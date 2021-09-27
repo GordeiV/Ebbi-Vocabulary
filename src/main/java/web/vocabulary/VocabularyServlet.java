@@ -1,5 +1,7 @@
 package web.vocabulary;
 
+import business.VocabularyService;
+import dao.DaoException;
 import entity.User;
 import entity.Vocabulary;
 import org.slf4j.Logger;
@@ -16,7 +18,13 @@ import java.util.List;
 @WebServlet(name = "vocabulary", urlPatterns = {"/vocabulary"})
 public class VocabularyServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(VocabularyServlet.class);
+    private VocabularyService vocabularyService;
     List<Vocabulary> vocabularies;
+
+    @Override
+    public void init() throws ServletException {
+        vocabularyService = new VocabularyService();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,13 +41,17 @@ public class VocabularyServlet extends HttpServlet {
         }
 
 
-        String strId = req.getParameter("id");
-        Long id = Long.parseLong(strId);
-        vocabularies = (List<Vocabulary>) req.getSession().getAttribute("vocabularies");
-        for(Vocabulary vocabulary : vocabularies) {
-            if(vocabulary.getId().equals(id)) {
-                vocabularyToJsp = vocabulary;
+        try {
+            String strId = req.getParameter("id");
+            Long id = Long.parseLong(strId);
+            vocabularies = vocabularyService.getUsersVocabularies(user);
+            for(Vocabulary vocabulary : vocabularies) {
+                if(vocabulary.getId().equals(id)) {
+                    vocabularyToJsp = vocabulary;
+                }
             }
+        } catch (DaoException e) {
+            logger.error("", e);
         }
 
         req.setAttribute("vocabulary", vocabularyToJsp);

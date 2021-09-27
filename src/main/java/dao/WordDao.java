@@ -11,6 +11,7 @@ public class WordDao {
     private static final Logger logger = LoggerFactory.getLogger(WordDao.class);
 
     private static final String GET_WORD = "SELECT * FROM words WHERE id_word = ?";
+    private static final String GET_AMOUNT_OF_WORDS = "SELECT COUNT(*) AS total FROM words w JOIN vocabulary v ON w.id_vocabulary = v.id_vocabulary WHERE id_user = ?";
     private static final String SAVE_WORD = "INSERT INTO words(foreign_word, native_word, transcription, id_vocabulary) VALUES (?, ?, ?, ?)";
     private static final String UPDATE_WORD = "UPDATE words SET foreign_word = ?, native_word = ?, transcription = ? WHERE id_word = ?";
     private static final String DELETE_WORD = "DELETE FROM words WHERE id_word = ?;";
@@ -51,6 +52,28 @@ public class WordDao {
 
         logger.debug("Word was received: {}", word);
         return word;
+    }
+
+    public int getAmountOfWords(Long userId) throws DaoException {
+        int amount = 0;
+
+        logger.trace("Method getAmountOfWords was invoked with userId - {}", userId);
+
+        try (Connection con = getConnection();
+            PreparedStatement stmt = con.prepareStatement(GET_AMOUNT_OF_WORDS)){
+            stmt.setLong(1, userId);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if(resultSet.next()) {
+                amount = resultSet.getInt("total");
+            }
+        } catch (SQLException ex) {
+            logger.error("Cannot an amount of words: " + ex.getMessage(), ex);
+            throw new DaoException(ex);
+        }
+
+        return amount;
     }
 
     public Long saveWord(Word word, Long vocabularyId) throws DaoException {

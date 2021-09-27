@@ -20,14 +20,17 @@ public class VocabularyDao {
     private static final Logger logger = LoggerFactory.getLogger(VocabularyDao.class);
 
     private static final String FIND_VOCABULARY = "SELECT * FROM vocabulary WHERE UPPER(v_name) REGEXP UPPER(?)";
+    private static final String FIND_USERS_VOCABULARY = "SELECT * FROM vocabulary WHERE UPPER(v_name) REGEXP UPPER(?) AND id_user = ?";
     private static final String GET_WORDS_FROM_VOCABULARY = "SELECT * FROM words WHERE id_vocabulary = ?";
     private static final String INSERT_VOCABULARY = "INSERT INTO vocabulary(v_name, v_date, id_user, v_status, next_repeat_time) VALUES (?, ?, ?, ?, ?)";
     private static final String GET_VOCABULARY_BY_ID = "SELECT * FROM vocabulary WHERE id_vocabulary = ?";
     private static final String GET_VOCABULARIES_FOR_REPEAT = "SELECT * FROM vocabulary WHERE next_repeat_time < NOW() AND id_user = ?";
     private static final String GET_ALL_VOCABULARIES = "SELECT * FROM vocabulary WHERE id_user = ?";
+    private static final String GET_AMOUNT_OF_VOCABULARIES = "SELECT COUNT(*) AS total FROM vocabulary WHERE id_user = ?";
     private static final String DELETE_VOCABULARY = "DELETE FROM vocabulary WHERE id_vocabulary = ?;";
     private static final String UPDATE_VOCABULARY_NAME = "UPDATE vocabulary SET v_name = ? WHERE id_vocabulary = ?";
     private static final String UPDATE_VOCABULARY = "UPDATE vocabulary SET v_name = ?, next_repeat_time = ?, v_status = ? WHERE id_vocabulary = ?";
+
 
     private ConnectionManager connectionManager;
 
@@ -164,6 +167,29 @@ public class VocabularyDao {
         return vocabularies;
     }
 
+    public int getAmountOfVocabularies(Long userId) throws DaoException {
+        int amount = 0;
+
+        logger.trace("Method getAmountOfVocabularies was invoked with userId: {}", userId);
+
+        try (Connection con = getConnection();
+            PreparedStatement stmt = con.prepareStatement(GET_AMOUNT_OF_VOCABULARIES))
+        {
+            stmt.setLong(1, userId);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if(resultSet.next()) {
+                amount = resultSet.getInt("total");
+            }
+        } catch (SQLException e) {
+            logger.error("Cannot get an amount of vocabularies " + e.getMessage(), e);
+            throw new DaoException(e);
+        }
+
+        return amount;
+    }
+
     public List<Vocabulary> findVocabulary(String pattern) throws DaoException {
         logger.debug("Method findVocabulary was invoked with pattern: {}", pattern);
 
@@ -173,6 +199,50 @@ public class VocabularyDao {
              PreparedStatement stmtFindVocabulary = con.prepareStatement(FIND_VOCABULARY);
              PreparedStatement stmtFindWord = con.prepareStatement(GET_WORDS_FROM_VOCABULARY)) {
             stmtFindVocabulary.setString(1, ".*?" + pattern + ".*?");
+            ResultSet rsWithVocabularies = stmtFindVocabulary.executeQuery();
+            logger.trace("Query was successfully invoked");
+
+            while (rsWithVocabularies.next()) {
+                String name = rsWithVocabularies.getString("v_name");
+                LocalDateTime date = rsWithVocabularies.getTimestamp("v_date").toLocalDateTime();
+                LocalDateTime repeatTime = rsWithVocabularies.getTimestamp("next_repeat_time").toLocalDateTime();
+                VocabularyStatus status = VocabularyStatus.values()[rsWithVocabularies.getInt("v_status")];
+                Long id = rsWithVocabularies.getLong("id_vocabulary");
+
+                Vocabulary vocabulary = new Vocabulary(name, date, repeatTime, status, id);
+
+                stmtFindWord.setLong(1, id);
+                ResultSet rsWithWords = stmtFindWord.executeQuery();
+
+                while (rsWithWords.next()) {
+                    Long wordId = rsWithWords.getLong("id_word");
+                    String foreignWord = rsWithWords.getString("foreign_word");
+                    String nativeWord = rsWithWords.getString("native_word");
+                    String transcription = rsWithWords.getString("transcription");
+                    vocabulary.addWord(new Word(wordId, foreignWord, nativeWord, transcription));
+                }
+                logger.debug("Vocabularies were received. Vocabulary (number {}): {}", vocabularies.size(), vocabulary);
+                vocabularies.add(vocabulary);
+            }
+
+        } catch (SQLException ex) {
+            logger.error("Cannot find Vocabulary by pattern: " + ex.getMessage(), ex);
+            throw new DaoException(ex);
+        }
+
+        return vocabularies;
+    }
+
+    public List<Vocabulary> findUsersVocabulary(String pattern, Long userId) throws DaoException {
+        logger.debug("Method findVocabulary was invoked with pattern: {}", pattern);
+
+        List<Vocabulary> vocabularies = new ArrayList<>();
+
+        try (Connection con = getConnection();
+             PreparedStatement stmtFindVocabulary = con.prepareStatement(FIND_USERS_VOCABULARY);
+             PreparedStatement stmtFindWord = con.prepareStatement(GET_WORDS_FROM_VOCABULARY)) {
+            stmtFindVocabulary.setString(1, ".*?" + pattern + ".*?");
+            stmtFindVocabulary.setLong(2, userId);
             ResultSet rsWithVocabularies = stmtFindVocabulary.executeQuery();
             logger.trace("Query was successfully invoked");
 

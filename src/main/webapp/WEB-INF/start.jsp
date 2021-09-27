@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 
             <div class="mebubar">
                 <ul class="menu">
-                    <li><a href="">Your Profil</a></li>
+                    <li><a href="profile">Your Profile</a></li>
                     <li><a href="logout">Log out</a></li>
                 </ul>
             </div>
@@ -45,6 +46,14 @@
                     <input type="submit" class="btn" value="Find">
                     <p class="message">${message}</p>
                 </form>
+                <p class="vocabulary-list">
+                    <c:forEach items="${vocabularies}" var="vocabulary">
+                        <a href="/MyFirstOwnProject-1.0/vocabulary?id=<c:out value='${vocabulary.id}' />">
+                            <c:out value="${vocabulary.name}" />
+                        </a>
+                        <br>
+                    </c:forEach>
+                </p>
             </div>
 
             <div class="about">
