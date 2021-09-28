@@ -1,0 +1,41 @@
+.container {
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: 300px;
+    border-radius: 20px;
+    padding: 30px;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+a {
+    color: black;
+}
+
+button {
+    background: #1DA1F2;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.5s;
+    font-size: 14px;
+    padding: 6px 12px 6px 12px;
+  }
+
+input {
+    background: #1DA1F2;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.5s;
+    font-size: 14px;
+    padding: 6px 12px 6px 12px;
+  }
+
+.back {
+    margin-top: 30px;
+}

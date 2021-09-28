@@ -1,34 +1,42 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/vocabularies.css">
+    <title>Repeat</title>
 </head>
-
 <body>
-<div class ="main">
-    <p>${login}</p>
-    <div>
-       <table>
-         <c:forEach items="${vocabularies}" var="vocabulary">
+    <div class="container">
 
-            <tr>
-             <td>
-              <a href="/MyFirstOwnProject-1.0/vocabulary?id=<c:out value='${vocabulary.id}' />"> <c:out value="${vocabulary.name}" /> </a>
-             </td>
-             <td>
-             <input type="button" value="Vocabulary is repeated"
-                             onclick="window.location.href = 'http://localhost:8080/MyFirstOwnProject-1.0/repeat?id=${vocabulary.id}'"
-                             class="cancel_button">
-             </td>
-            </tr>
+        <table>
 
+            <c:forEach items="${vocabularies}" var="vocabulary">
+                <tr>
+                    <th>
+                        <a href="vocabulary?id=<c:out value='${vocabulary.id}' />">
+                            <c:out value="${vocabulary.name}" />
+                        </a>
+                    </th>
 
-         </c:forEach>
-       </table>
+                    <th>
+                        <input type="button" value="Repeated" c
+                        onclick="window.location.href = 'http://localhost:8080/MyFirstOwnProject-1.0/repeat?id=${vocabulary.id}'"
+                        class="cancel_button">
+                    </th>
+                </tr>
+            </c:forEach>
+
+        </table>
+
+        <div class="back">
+            <form action="start">
+                <button type="submit">Back</button>
+              </form>
+        </div>
     </div>
-
-</div>
 </body>
 </html>

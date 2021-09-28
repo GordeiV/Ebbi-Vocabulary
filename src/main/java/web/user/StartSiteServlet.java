@@ -20,6 +20,8 @@ public class StartSiteServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+        req.getSession().removeAttribute("vocabularies");
+
         if (req.getSession().getAttribute("user") == null) {
             logger.trace("if-loop entered");
             resp.sendRedirect(req.getContextPath() + "/login");

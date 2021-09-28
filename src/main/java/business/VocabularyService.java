@@ -39,4 +39,8 @@ public class VocabularyService {
     public int getAmountOfVocabularies(Long userId) throws DaoException {
         return vocabularyDao.getAmountOfVocabularies(userId);
     }
+
+    public boolean deleteVocabulary(Long vocabularyId) throws DaoException {
+        return vocabularyDao.deleteVocabulary(vocabularyId);
+    }
 }

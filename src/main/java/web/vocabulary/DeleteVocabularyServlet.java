@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "vocabularies for repeat", urlPatterns = "/repeat")
-public class RepeatVocabulariesServlet extends HttpServlet {
+@WebServlet(name = "delete", urlPatterns = {"/delete"})
+public class DeleteVocabularyServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(VocabulariesServlet.class);
     private List<Vocabulary> vocabularies;
     private VocabularyService vocabularyService;
@@ -31,8 +31,6 @@ public class RepeatVocabulariesServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-//        logger.info()
-
         User user = (User) req.getSession().getAttribute("user");
 
         logger.trace("user: {}", user);
@@ -46,7 +44,7 @@ public class RepeatVocabulariesServlet extends HttpServlet {
 
 
         try {
-            vocabularies = vocabularyService.getVocabulariesForRepeat(user);
+            vocabularies = vocabularyService.getUsersVocabularies(user);
         } catch (DaoException e) {
             logger.error(e.getMessage());
         }
@@ -57,10 +55,10 @@ public class RepeatVocabulariesServlet extends HttpServlet {
         }
 
         if(vocabularies.size() == 0) {
-            resp.getWriter().print("There are no vocabularies to repeat");
+            resp.getWriter().print("There are no vocabularies");
         } else {
             req.setAttribute("vocabularies", vocabularies);
-            req.getRequestDispatcher("/WEB-INF/show-vocabularies-for-repeat.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);
         }
     }
 
@@ -69,7 +67,7 @@ public class RepeatVocabulariesServlet extends HttpServlet {
         Long vocabularyId = Long.parseLong(req.getParameter("id"));
         logger.info("Vocabulary Id: " + vocabularyId);
         try {
-            vocabularyService.setVocabularyAsRepeated(vocabularyId);
+            vocabularyService.deleteVocabulary(vocabularyId);
         } catch (DaoException e) {
             logger.error("", e);
         }
