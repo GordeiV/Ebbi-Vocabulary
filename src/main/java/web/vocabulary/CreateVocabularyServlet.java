@@ -51,7 +51,7 @@ public class CreateVocabularyServlet extends HttpServlet {
         String transcription = req.getParameter("transcription");
         String translation = req.getParameter("translation");
         if (foreignWord != null && translation != null) {
-            Word word = new Word(foreignWord, transcription, translation);
+            Word word = new Word(foreignWord, translation, transcription);
             vocabulary.addWord(word);
         } else {
             req.setAttribute("error", "There must be a word and its translation");

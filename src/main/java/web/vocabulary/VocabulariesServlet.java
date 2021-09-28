@@ -47,9 +47,12 @@ public class VocabulariesServlet extends HttpServlet {
         } catch (DaoException e) {
             logger.error(e.getMessage());
         }
-
-        req.setAttribute("login", user.getLogin());
-        req.setAttribute("vocabularies", vocabularies);
-        req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);
+        if(vocabularies.size() == 0) {
+            req.getRequestDispatcher("/WEB-INF/no-vocabularies.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("login", user.getLogin());
+            req.setAttribute("vocabularies", vocabularies);
+            req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);
+        }
     }
 }

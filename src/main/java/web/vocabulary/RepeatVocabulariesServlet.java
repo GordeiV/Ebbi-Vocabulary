@@ -57,7 +57,7 @@ public class RepeatVocabulariesServlet extends HttpServlet {
         }
 
         if(vocabularies.size() == 0) {
-            resp.getWriter().print("There are no vocabularies to repeat");
+            req.getRequestDispatcher("/WEB-INF/no-vocabularies.jsp").forward(req, resp);
         } else {
             req.setAttribute("vocabularies", vocabularies);
             req.getRequestDispatcher("/WEB-INF/show-vocabularies-for-repeat.jsp").forward(req, resp);

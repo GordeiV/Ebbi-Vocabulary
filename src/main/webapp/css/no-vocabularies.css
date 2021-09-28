@@ -1,20 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .container {
+    text-align: center;
     font-size: 24px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    max-width: 300px;
     border-radius: 20px;
     padding: 30px;
+    max-width: 400px;
     background: #ecf0f3;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
-a {
-    color: black;
-}
+.titel {
+    font-size: 32px;
+    color: #1DA1F2;
+    letter-spacing: 1px;
+    font-family: 'Bebas Neue', cursive;
+  }
 
 button {
     background: #1DA1F2;
@@ -22,22 +26,14 @@ button {
     border-radius: 10px;
     cursor: pointer;
     font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
     font-size: 14px;
     padding: 6px 12px 6px 12px;
-  }
+}
 
-input {
-    background: #1DA1F2;
-    margin-left: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 900;
-    transition: 0.5s;
-    font-size: 14px;
-    padding: 6px 12px 6px 12px;
-  }
+  
 
 .back {
-    margin-top: 30px;
+    margin-top: 50px;
 }

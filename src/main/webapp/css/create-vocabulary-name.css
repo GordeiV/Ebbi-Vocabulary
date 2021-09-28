@@ -5,8 +5,8 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    max-width: 300px;
     border-radius: 20px;
+    max-width: 400px;
     padding: 30px;
     background: #ecf0f3;
     box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
@@ -16,28 +16,54 @@ a {
     color: black;
 }
 
+input {
+    font-weight: 900;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 6px 12px 6px 12px;
+}
+
 button {
     background: #1DA1F2;
     margin-left: 10px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
-    font-size: 14px;
+    font-size: 16px;
     padding: 6px 12px 6px 12px;
-  }
+}
 
-input {
+.error {
+    margin-top: 10px;
+    color: rgb(128, 13, 5);
+}
+
+.site {
+    text-align: center;
+}
+
+.titel {
+    text-align: center;
+    font-size: 32px;
+    color: #1DA1F2;
+    letter-spacing: 1px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.btn {
     background: #1DA1F2;
     margin-left: 10px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
     font-size: 14px;
     padding: 6px 12px 6px 12px;
-  }
+}
 
 .back {
-    margin-top: 30px;
+    margin-top: 50px;
 }

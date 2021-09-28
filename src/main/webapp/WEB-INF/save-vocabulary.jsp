@@ -4,21 +4,27 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/save-vocabulary.css">
 </head>
 
 <body>
-<div class ="main">
-    <p>${login}</p>
-    <div>
-       <p>All words in the vocabulary:</p>
+<div class ="container">
+    <div class="site">
+        <div class="titel">
+            All words in the vocabulary:
+        </div>
        <table>
+            <tr>
+                <th>Word</th>
+                <th>Transcription</th>
+                <th>Translation</th>
+            </tr>
          <c:forEach items="${words}" var="word">
-           <tr>
-             <td><c:out value="${word.foreignWord}" /></td>
-             <td><c:out value="${word.transcription}" /></td>
-             <td><c:out value="${word.nativeWord}" /></td>
-           </tr>
-           <br>
+            <tr>
+                <td><c:out value="${word.foreignWord}" /></td>
+                <td><c:out value="${word.transcription}" /></td>
+                <td><c:out value="${word.nativeWord}" /></td>
+            </tr>
          </c:forEach>
        </table>
     </div>
