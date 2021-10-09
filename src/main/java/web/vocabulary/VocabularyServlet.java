@@ -4,6 +4,7 @@ import business.VocabularyService;
 import dao.DaoException;
 import entity.User;
 import entity.Vocabulary;
+import entity.Word;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "vocabulary", urlPatterns = {"/vocabulary"})
@@ -54,7 +56,8 @@ public class VocabularyServlet extends HttpServlet {
             logger.error("", e);
         }
 
-        req.setAttribute("vocabulary", vocabularyToJsp);
+        ArrayList<Word> words = vocabularyToJsp.getWords();
+        req.setAttribute("words", words);
         req.getRequestDispatcher("/WEB-INF/vocabulary.jsp").forward(req, resp);
     }
 }
