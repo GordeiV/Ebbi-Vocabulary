@@ -31,7 +31,7 @@
     </div>
     <div>
       <p></p>
-      <form action="vocabularies" method="get">
+      <form action="start" method="get">
          <input type="submit" class="btn" value="Back">
       </form>
     </div>

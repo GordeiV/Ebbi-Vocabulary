@@ -15,7 +15,7 @@
                 <input type="password" name="password" placeholder="Password">
                 <button type="submit">LOGIN</button>
             </form>
-            <a href="" id="forgot-pass">Forgot Password?</a>
+            <a href="forgot" id="forgot-pass">Forgot Password?</a>
         </div>
 
         <div class="error">${error}</div>
