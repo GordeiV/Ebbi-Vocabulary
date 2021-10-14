@@ -36,7 +36,7 @@
                 <version>2.2</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>D:\Учеба\Программирование\apache-tomcat-9.0.52\webapps</outputDirectory>
+                    <outputDirectory>C:\Other\Учеба\Программирование\apache-tomcat-9.0.52\webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
 
 * {
 margin: 0;
@@ -28,6 +30,11 @@ input[type="submit"] {
     letter-spacing: 1px;
     cursor: pointer;
     font-size: 18px;
+}
+
+img {
+    padding: 8px;
+    width: 550px;
 }
 
 h1 {
@@ -107,11 +114,12 @@ ul li {
 }
 
 .about {
+    font-family: 'Oswald', sans-serif;
     border-radius: 20px;
-    width: 30%;
+    width: 35%;
     padding: 30px;
     background: #ecf0f3;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .mebubar {

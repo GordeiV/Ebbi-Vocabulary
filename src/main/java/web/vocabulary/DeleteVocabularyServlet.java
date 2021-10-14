@@ -55,7 +55,7 @@ public class DeleteVocabularyServlet extends HttpServlet {
         }
 
         if(vocabularies.size() == 0) {
-            resp.getWriter().print("There are no vocabularies");
+            req.getRequestDispatcher("/WEB-INF/no-vocabularies.jsp").forward(req, resp);
         } else {
             req.setAttribute("vocabularies", vocabularies);
             req.getRequestDispatcher("/WEB-INF/show-vocabularies.jsp").forward(req, resp);

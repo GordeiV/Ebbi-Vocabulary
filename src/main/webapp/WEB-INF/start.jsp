@@ -57,7 +57,15 @@
             </div>
 
             <div class="about">
-                <p>It's for...</p>
+                <p>Have you ever noticed that you can’t remember a word which you’ve already learned before? I can assure you that this is a common situation. The problem is that you learn and, most importantly, repeat words incorrectly.
+                   </br> German psychologist Hermann Ebbinghaus wanted to understand more about why we forget things and how to prevent it. You can find more information about him and his theory on the Internet by yourself.
+                   According to his research, we must repeat information with the following periodicity:</p>
+                <img src="${pageContext.request.contextPath}/images/curve.png">
+                <p>
+                    This website was made to help you learn words using this theory.
+                    You only have to create your vocabularies with new words and then check the tab “Vocabularies for repeat”.
+                    When the time comes, there will be dictionaries that you must repeat.
+                </p>
             </div>
         </div>
     </div>
