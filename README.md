@@ -20,3 +20,4 @@ In this project I deeped my knowledge in the following technologies:
 - Maven
 - Git
 - TCP/IP, HTTP
+- XML
